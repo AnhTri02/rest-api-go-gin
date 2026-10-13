@@ -9,16 +9,17 @@ import (
 	"github.com/golang-migrate/migrate/v4/database/sqlite3"
 	"github.com/golang-migrate/migrate/v4/source/file"
 )
-//A migration is a versioned SQL file that describes one change to your database structure, for example "create the users table". 
 
-//migration runner 
+//A migration is a versioned SQL file that describes one change to your database structure, for example "create the users table".
+
+// migration runner
 func main() {
 	if len(os.Args) < 2 {
 		log.Fatal("Please provide a migration direction: 'up' or 'down'")
 	}
 
 	direction := os.Args[1]
-//öppna db
+	//öppna db
 	db, err := sql.Open("sqlite3", "./data.db")
 	if err != nil {
 		log.Fatal(err)
