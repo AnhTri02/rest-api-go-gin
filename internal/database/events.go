@@ -28,7 +28,7 @@ func (m *EventModel) Insert(event *Event) error {
 		defer cancel()
 
 		//lägg till en ny rad i events med dessa 5 kolumnerna
-		query := "INSERT INTO events (owner_id, name, description, date, location) VALUES ($1, $2, $3, $4, $5)"
+		query := "INSERT INTO events (owner_id, name, description, date, location) VALUES ($1, $2, $3, $4, $5) RETURNING id"
 
 		return m.DB.QueryRowContext(ctx, query, event.OwnerId, event.Name, event.Description, event.Date, event.Location).Scan(&event.Id)
 
