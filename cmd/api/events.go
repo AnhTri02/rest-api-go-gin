@@ -17,7 +17,7 @@ func (app *application) createEvent(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 
-	err := app.models.Events.insert(&event)
+	err := app.models.Events.Insert(&event)
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create event zz"})
@@ -30,7 +30,7 @@ func (app *application) createEvent(c *gin.Context) {
 //get all event
 
 func (app *application) getAllEvents(c *gin.Context){
-		events, err := app.models.Events.getAll()
+		events, err := app.models.Events.GetAll()
 
 		if err != nil{
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve events (GetallEvents)"})
@@ -116,3 +116,5 @@ func (app *application) deleteEvent (c *gin.Context) {
 
 	c.JSON(http.StatusNoContent, nil)
 }
+
+//IMPLEMENTERING AV ALLA DATABAS METODER SOM VI ANROPAR I VÅRA HANDLERS
